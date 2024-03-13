@@ -2,18 +2,21 @@
 ## Screenshots
 
 ### /all-student
-[](images/test1_jtl.png)
+![](images/test1_jmx.png)
+
+![](images/test1_jtl.png)
 
 
 ### /all-student-name
-[](images/test2_jmx.png)
-[](images/test2_jtl.png)
+![](images/test2_jmx.png)
+
+![](images/test2_jtl.png)
 
 
 ### /highest-gpa
-[](images/test3_jmx.png)
+![](images/test3_jmx.png)
 
-[](images/test3_jtlpng)
+![](images/test3_jtlpng)
 
 **Improvement from JMeter Measurements:**
 
