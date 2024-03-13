@@ -25,10 +25,8 @@ public class StudentService {
     private StudentCourseRepository studentCourseRepository;
 
     public List<StudentCourse> getAllStudentsWithCourses() {
-        // Fetch all StudentCourse relationships at once
         List<StudentCourse> allStudentCourses = studentCourseRepository.findAll();
 
-        // Convert to a list of DTOs, if necessary
         List<StudentCourse> studentCourses = new ArrayList<>();
         for (StudentCourse sc : allStudentCourses) {
             StudentCourse studentCourse = new StudentCourse();
@@ -47,11 +45,14 @@ public class StudentService {
 
     public String joinStudentNames() {
         List<Student> students = studentRepository.findAll();
-        String result = "";
+        StringBuilder resultBuilder = new StringBuilder();
         for (Student student : students) {
-            result += student.getName() + ", ";
+            resultBuilder.append(student.getName()).append(", ");
         }
-        return result.substring(0, result.length() - 2);
+        if (resultBuilder.length() > 0) {
+            resultBuilder.setLength(resultBuilder.length() - 2);
+        }
+        return resultBuilder.toString();
     }
 }
 
