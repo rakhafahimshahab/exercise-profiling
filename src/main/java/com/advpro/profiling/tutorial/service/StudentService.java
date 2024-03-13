@@ -24,17 +24,18 @@ public class StudentService {
     private StudentCourseRepository studentCourseRepository;
 
     public List<StudentCourse> getAllStudentsWithCourses() {
-        List<Student> students = studentRepository.findAll();
+        // Fetch all StudentCourse relationships at once
+        List<StudentCourse> allStudentCourses = studentCourseRepository.findAll();
+
+        // Convert to a list of DTOs, if necessary
         List<StudentCourse> studentCourses = new ArrayList<>();
-        for (Student student : students) {
-            List<StudentCourse> studentCoursesByStudent = studentCourseRepository.findByStudentId(student.getId());
-            for (StudentCourse studentCourseByStudent : studentCoursesByStudent) {
-                StudentCourse studentCourse = new StudentCourse();
-                studentCourse.setStudent(student);
-                studentCourse.setCourse(studentCourseByStudent.getCourse());
-                studentCourses.add(studentCourse);
-            }
+        for (StudentCourse sc : allStudentCourses) {
+            StudentCourse studentCourse = new StudentCourse();
+            studentCourse.setStudent(sc.getStudent());
+            studentCourse.setCourse(sc.getCourse());
+            studentCourses.add(studentCourse);
         }
+
         return studentCourses;
     }
 
